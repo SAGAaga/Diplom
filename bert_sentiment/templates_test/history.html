@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Request History{% endblock %}
+
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>Request</th>
+      <th>Response</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for request in requests %}
+    <tr>
+      <td>{{ request.timestamp }}</td>
+      <td>{{ request.request }}</td>
+      <td>{{ request.response }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% end
