@@ -1,20 +1,20 @@
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetConfirmView, PasswordResetView
 from django.shortcuts import render, redirect
-from transformers import pipeline
+from django.views.generic import CreateView
 
 from .forms import RegistrationForm, LoginForm, UserPasswordChangeForm, UserPasswordResetForm, UserSetPasswordForm, \
     UserProfileForm, SentimentAnalyzerForm
-from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetConfirmView, PasswordResetView
-from django.views.generic import CreateView
-from django.contrib.auth import logout
-
-from django.contrib.auth.decorators import login_required
-
 from .models import History
+
+
+# from transformers import pipeline
 
 
 # sentiment_model = pipeline("text-classification", model="federicopascual/finetuning-sentiment-model-3000-samples")
 # sentiment_model = pipeline("text-classification", model="Ghost1/bert-base-uncased-finetuned_for_sentiment_analysis1-sst2")
-sentiment_model = pipeline("text-classification", model="nlptown/bert-base-multilingual-uncased-sentiment")
+# sentiment_model = pipeline("text-classification", model="nlptown/bert-base-multilingual-uncased-sentiment")
 
 
 def index(request):
