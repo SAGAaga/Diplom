@@ -29,5 +29,5 @@ urlpatterns = [
 
   #
   path('profile/', views.profile, name='profile'),
-  path('sample-page/', views.sample_page, name='sample_page'),
+  path('sentiment-analyzer/', views.sentiment_analyzer, name='sentiment_analyzer'),
 ]

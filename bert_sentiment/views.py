@@ -9,12 +9,12 @@ from .forms import RegistrationForm, LoginForm, UserPasswordChangeForm, UserPass
 from .models import History
 
 
-# from transformers import pipeline
+from transformers import pipeline
 
 
 # sentiment_model = pipeline("text-classification", model="federicopascual/finetuning-sentiment-model-3000-samples")
 # sentiment_model = pipeline("text-classification", model="Ghost1/bert-base-uncased-finetuned_for_sentiment_analysis1-sst2")
-# sentiment_model = pipeline("text-classification", model="nlptown/bert-base-multilingual-uncased-sentiment")
+sentiment_model = pipeline("text-classification", model="nlptown/bert-base-multilingual-uncased-sentiment")
 
 
 def index(request):
@@ -72,7 +72,7 @@ def profile(request):
 
 
 @login_required(login_url='/accounts/login/')
-def sample_page(request):
+def sentiment_analyzer(request):
     sentiment_response = None
     sentiment_sores = {
         '1 star': 'Strongly Negative',
@@ -90,12 +90,12 @@ def sample_page(request):
         form = SentimentAnalyzerForm(instance=History())
 
     context = {
-        'segment': 'sample_page',
+        'segment': 'sentiment_analyzer',
         'form': form,
         'sentiments': list(sentiment_sores.values()),
         'sentiment_response': sentiment_response,
     }
-    return render(request, 'pages/sample-page.html', context)
+    return render(request, 'pages/sentiment-analyzer.html', context)
 
 
 # @login_required(login_url='/accounts/login/')
