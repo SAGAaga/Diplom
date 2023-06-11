@@ -30,4 +30,5 @@ urlpatterns = [
   #
   path('profile/', views.profile, name='profile'),
   path('sentiment-analyzer/', views.sentiment_analyzer, name='sentiment_analyzer'),
+  path('history/delete/<int:history_id>/', views.delete_history, name='delete_history'),
 ]

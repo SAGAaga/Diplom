@@ -18,7 +18,8 @@ class Request(models.Model):
 class History(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text_data = models.TextField()
+    sentiment = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.user.username} - {" ".join(self.text.split(" ")[:5])}'
+        return f'{self.user.username} - {" ".join(self.text_data.split(" ")[:5])}'

@@ -29,15 +29,16 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+WAGTAILIMAGES_IMAGE_MODEL = 'wagtailimages.Image'
 
 INSTALLED_APPS = [
+    'django.contrib.contenttypes',
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bert_sentiment'
+    'bert_sentiment',
 ]
 
 MIDDLEWARE = [
@@ -66,10 +67,28 @@ TEMPLATES = [
             ],
             'libraries': {
                 'replace_value': 'bert_sentiment.templatetags.replace_value',
+                'define': 'bert_sentiment.templatetags.define',
             },
         },
     },
 ]
+
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.jinja2.Jinja2',
+#         'DIRS': [],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'environment': 'diplom_sentiment.jinja2.Environment',
+#             'auto_reload': True,
+#             'extensions': [
+#                 'wagtail.jinja2tags.core',
+#                 'wagtail.admin.jinja2tags.userbar',
+#                 'wagtail.images.jinja2tags.images',
+#             ],
+#         },
+#     },
+# ]
 
 WSGI_APPLICATION = 'diplom_sentiment.wsgi.application'
 
