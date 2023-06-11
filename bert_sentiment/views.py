@@ -77,8 +77,11 @@ def profile(request):
 
 
 def get_history(request, periods=[]):
-    now_date = datetime.now()
     response = {}
+    if not request.user.is_authenticated:
+        return response
+
+    now_date = datetime.now()
     if 'day' in periods:
         history = request.user.history_set.filter(
             created_at__gte=datetime(year=now_date.year, month=now_date.month, day=now_date.day)
